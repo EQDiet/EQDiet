@@ -3,7 +3,7 @@ EQDiet: Free Open-source Healthy Diet App
 
 Welcome to EQDiet. Hope you enjoy using our app! You can visit our website [here](https://eqdiet.weebly.com)
 
-**Latest EQDiet Release:** Beta 0.8
+### Latest EQDiet Release: Beta 0.8
 
 To know more about this release, visit [this link](https://eqdiet.weebly.com/release-notes/released-eqdiet-beta-08)
 
