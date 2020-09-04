@@ -1,0 +1,36 @@
+jobs:
+- job: Ubuntu
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - bash: |
+     chmod +x mvnw
+     ./mvnw install
+    displayName: Building with Maven
+  - bash: |
+     chmod +x buildjar
+     ./buildjar
+    displayName: Building JAR file
+  
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(Pipeline.Workspace)/s/Release/EQDietBeta0.8.jar'
+      artifact: 'EQDietBeta0.8.jar built in Ubuntu'
+      publishLocation: 'pipeline'
+    displayName: 'Publish Ubuntu Pipeline Artifacts'
+    
+- job: Windows
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+  - script: mvnw.bat install
+    displayName: Building with Maven
+  - script: buildjar.bat
+    displayName: Building JAR file
+  
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(Pipeline.Workspace)\s\Release\EQDietBeta0.8.jar'
+      artifact: 'EQDietBeta0.8.jar built in Windows'
+      publishLocation: 'pipeline'
+    displayName: 'Publish Windows Pipeline Artifacts'
