@@ -2,6 +2,7 @@ jobs:
 - job: Ubuntu
   pool:
     vmImage: 'ubuntu-latest'
+
   steps:
   - bash: |
      chmod +x mvnw
@@ -11,7 +12,7 @@ jobs:
      chmod +x buildjar
      ./buildjar
     displayName: Building JAR file
-  
+
   - task: PublishPipelineArtifact@1
     inputs:
       targetPath: '$(Pipeline.Workspace)/s/Release/EQDietBeta0.8.jar'
@@ -22,10 +23,17 @@ jobs:
 - job: Windows
   pool:
     vmImage: 'windows-latest'
+
   steps:
-  - script: mvnw.bat install
+  - task: BatchScript@1
+    inputs:
+      filename: 'mvnw.bat'
+      arguments: 'install'
     displayName: Building with Maven
-  - script: buildjar.bat
+
+  - task: BatchScript@1
+    inputs:
+      filename: 'buildjar.bat'
     displayName: Building JAR file
   
   - task: PublishPipelineArtifact@1
