@@ -21,7 +21,7 @@ Contributing to EQDiet development is really easy. Just follow these steps:
 1. You'll appear as a collaborator of the application.
 2. You'll have priority support.
 3. You'll recive an email with an exclusive thing about EQDiet.
-4. If you collaborate a lot of times, you'll be an official EQDiet developer, so (almost) every request you send by email to us will be approved and published in our website, with your name on it.
+4. If you collaborate a lot of times, we will publish an EQDiet release with your name on it!
 
 ## Aditional collaboration options
 

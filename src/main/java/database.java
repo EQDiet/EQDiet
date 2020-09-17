@@ -2,12 +2,12 @@
  * EQDiet Beta 0.8 DataBase (ver 05/23/2020).
  * (C) 2020, EQDiet and Daniel Lopez Tena.
  * Website: https://eqdiet.weebly.com
- * This program comes with NO WARANTY. It's safe but use it at your own risk.
+ * This program comes with NO WARANTY.
  * Project protected by the MIT license.
  * See our GitHub repositories for more information at https://github.com/EQDiet
  * 
  * How it works:
- * 1. EQDietBeta08.java (the main class) creates the food and quantity variables.
+ * 1. EQDiet.java (the main class) creates the food and quantity variables.
  * 2. Later, it invokes this file (database.java).
  * 3. Searches the selected food in this file in foodonly variable.
  * 4. It remembers the position of the food and looks for the kilocalories at the same position in kcalonly variable.
@@ -19,7 +19,7 @@
  */
 
 public class database {
-    static String[] foodonly ={ //Ten per line. Duplicate foods do not count
+    static String[] foodonly ={ //Ten per line. Duplicated foods do not count
         "apple", "pineapple", "apricot", "pear", "banana", "blueberry", "blood orange", "blackberry", "red cranberry", "strawberry",
         "fig", "grapefruit", "pomegranate", "hip", "rosehip", "melon", "raspberry", "ginger", "kiwi", "cherry", "lychee", "litchi",
         "tangerine", "mango", "passion fruit", "plum", "peach", "quince", "rhubarb", "watermelon", "grape", "lemon",
@@ -33,7 +33,7 @@ public class database {
         "glass noodles", "whole wheat spaghetti", "bread", "wholemeal bread", "bretzel", "croissant", "cinnamon roll", "cheeseburger", "chips", "curried sausage", 
         "kebab", "chocolate cookies", "vegetarian kebab", "margarita pizza", "salami pizza", "french fries", "burger", "nutella", "chocolate"
     };
-    static int[] kcalonly ={ //Ten per line. Duplicate foods do not count
+    static int[] kcalonly ={ //Ten per line. Duplicated foods do not count
         52, 55, 43, 55, 88, 35, 45, 43, 46, 32,
         107, 50, 74, 162, 162, 54, 36, 80, 51, 50, 66, 66,
         50, 62, 97, 47, 41, 38, 21, 30, 70, 35,

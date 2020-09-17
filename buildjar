@@ -1,15 +1,15 @@
 #!/bin/sh
 cd target/classes
-echo Building EQDietBeta0.8.jar...
+echo Building EQDietBeta0.9.jar...
 echo
 if [ ! -d "META-INF" ] ; then
     mkdir META-INF
 fi
 echo Manifest-Version: 1.0 >META-INF/MANIFEST.MF
 echo Class-Path: . >>META-INF/MANIFEST.MF
-echo Main-Class: EQDietBeta08 >>META-INF/MANIFEST.MF
+echo Main-Class: EQDiet >>META-INF/MANIFEST.MF
 if [ ! -d "../../Release" ] ; then
     mkdir ../../Release
 fi
-jar cvmf META-INF/MANIFEST.MF ../../Release/EQDietBeta0.8.jar *.class
+jar cvmf META-INF/MANIFEST.MF ../../Release/EQDietBeta0.9.jar *.class ../../EQDiet.png
 exit

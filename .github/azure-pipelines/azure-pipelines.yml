@@ -15,7 +15,7 @@ jobs:
 
   - task: PublishPipelineArtifact@1
     inputs:
-      targetPath: '$(Pipeline.Workspace)/s/Release/EQDietBeta0.8.jar'
+      targetPath: '$(Pipeline.Workspace)/s/Release/EQDietBeta0.9.jar'
       artifact: 'EQDietBeta0.8.jar built in Ubuntu'
       publishLocation: 'pipeline'
     displayName: 'Publish Ubuntu Pipeline Artifacts'
@@ -38,7 +38,7 @@ jobs:
   
   - task: PublishPipelineArtifact@1
     inputs:
-      targetPath: '$(Pipeline.Workspace)\s\Release\EQDietBeta0.8.jar'
+      targetPath: '$(Pipeline.Workspace)\s\Release\EQDietBeta0.9.jar'
       artifact: 'EQDietBeta0.8.jar built in Windows'
       publishLocation: 'pipeline'
     displayName: 'Publish Windows Pipeline Artifacts'
