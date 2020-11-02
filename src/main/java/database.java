@@ -1,6 +1,6 @@
 /**
- * EQDiet Beta 0.8 DataBase (ver 05/23/2020).
- * (C) 2020, EQDiet and Daniel Lopez Tena.
+ * EQDiet Beta 0.8 Database (ver 05/23/2020).
+ * (C) 2020, EQDiet.
  * Website: https://eqdiet.weebly.com
  * This program comes with NO WARANTY.
  * Project protected by the MIT license.
