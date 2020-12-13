@@ -18,7 +18,7 @@
  * And thanks a lot to Mª Dolores P. C. for giving me lots of food kilocalories!
  */
 
-public class database {
+public class EQDiet_db {
     static String[] foodonly ={ //Ten per line. Duplicated foods do not count
         "apple", "pineapple", "apricot", "pear", "banana", "blueberry", "blood orange", "blackberry", "red cranberry", "strawberry",
         "fig", "grapefruit", "pomegranate", "hip", "rosehip", "melon", "raspberry", "ginger", "kiwi", "cherry", "lychee", "litchi",

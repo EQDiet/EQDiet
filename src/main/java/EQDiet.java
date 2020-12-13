@@ -1,11 +1,10 @@
 /**
- * EQDiet Beta 0.9 (release date: [pending]).
- * A free open source healthy diet app coded.
+ * EQDiet Beta 0.9.
  * (C) 2020, EQDiet.
  * Website: https://eqdiet.weebly.com
  * This program comes with NO WARANTY.
- * Project protected by the MIT license.
- * See our GitHub repositories for more information. (github.com/EQDiet)
+ * Project licensed under the MIT license.
+ * See our GitHub repositories for more information at https://github.com/EQDiet
  */
 
 import java.awt.event.WindowAdapter;
@@ -589,13 +588,13 @@ public final class EQDiet extends javax.swing.JFrame {
             grams = jTextField2.getText();
             quantity = Long.parseLong(grams);
             try {
-                for (int i = 0; i <= database.foodonly.length; i++) {
-                    if (database.foodonly[i].equals((dish).toLowerCase())) {
-                        foodDB = database.foodonly[i].toLowerCase();
-                        finalKcal = database.kcalonly[i] * quantity / 100;
+                for (int i = 0; i <= EQDiet_db.foodonly.length; i++) {
+                    if (EQDiet_db.foodonly[i].equals((dish).toLowerCase()) || (EQDiet_db.foodonly[i].equals((dish.substring(0, dish.length()-1)).toLowerCase()) && dish.endsWith("s"))) {
+                        foodDB = EQDiet_db.foodonly[i].toLowerCase();
+                        finalKcal = EQDiet_db.kcalonly[i] * quantity / 100;
                         jLabel5.setText("You have eaten " + finalKcal + " kilocalories");
                         jLabel9.setText("Press \"End session\" to add all your foods");
-                        log = "You have eaten " + finalKcal + " kilocalories of " + foodDB;
+                        log = "You have eaten " + finalKcal + " kilocalories of " + jTextField1.getText().toLowerCase();
                         logQuantity += finalKcal;
                         jButton2.setEnabled(true);
                         WriteLog();
