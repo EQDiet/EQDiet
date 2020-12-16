@@ -7,7 +7,7 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
-                    <show>public</show>
+                    <show>private</show>
                     <nohelp>false</nohelp>
                 </configuration>
             </plugin>

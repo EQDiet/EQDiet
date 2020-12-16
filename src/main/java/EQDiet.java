@@ -35,7 +35,7 @@ public final class EQDiet extends javax.swing.JFrame {
     
     void StartLog() {
         duration = 1;
-        try (FileWriter fwS=new FileWriter("FoodLog.txt");
+        try (FileWriter fwS=new FileWriter("Data/FoodLog.txt");
                 BufferedWriter fW = new BufferedWriter(fwS)) {
             while(duration > 0) {
                 fW.write("-------------------------------------------------------");
@@ -59,7 +59,7 @@ public final class EQDiet extends javax.swing.JFrame {
     
     void StartLogNewSession() {
         duration = 1;
-        try (FileWriter fwS=new FileWriter("FoodLog.txt", true);
+        try (FileWriter fwS=new FileWriter("Data/FoodLog.txt", true);
                 BufferedWriter fW = new BufferedWriter(fwS)) {
             while(duration > 0) {
                 fW.newLine();
@@ -76,7 +76,7 @@ public final class EQDiet extends javax.swing.JFrame {
     
     void WriteLog() {
         duration = 1;
-        try (FileWriter flS=new FileWriter("FoodLog.txt", true);
+        try (FileWriter flS=new FileWriter("Data/FoodLog.txt", true);
             BufferedWriter fS = new BufferedWriter(flS)) {
             while(duration > 0) {
                 fS.newLine();
@@ -111,19 +111,19 @@ public final class EQDiet extends javax.swing.JFrame {
     
     void CheckForUpdates(double currentVersion) {
         try {
-            URL url = new URL("https://eqdiet.github.io/downloads/version-data/VersionNumber.txt");
+            URL url = new URL("https://dl.bintray.com/eqdiet/app/main/version-data/VersionNumber.txt");
             Scanner sc = new Scanner(url.openStream());
             double newVersion = Double.valueOf(sc.nextLine());
             javax.swing.JFrame topFrame = (javax.swing.JFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
             if (newVersion > currentVersion) {
                 int result = JOptionPane.showConfirmDialog(topFrame, "Version " + newVersion + " is available. Would you like to install it now?\nThe previous version will be removed.", "Updates available", JOptionPane.YES_NO_OPTION);
                 if (result == JOptionPane.YES_OPTION) {
-                    URL verurl = new URL("https://eqdiet.github.io/downloads/version-data/Version.txt");
+                    URL verurl = new URL("https://dl.bintray.com/eqdiet/app/main/version-data/Version.txt");
                     Scanner scanner = new Scanner(verurl.openStream());
                     String newVer = scanner.nextLine();
                     onExit();
-                    Download("https://github.com/EQDiet/EQDiet" + newVer + "/releases/download/" + newVersion + "/EQDiet" + newVer + ".jar", "EQDiet" + newVer + ".jar");
-                    Download("https://dl.lumito.net/public/projects/EQDiet/EQDietUpdater.jar", "EQDietUpdater.jar");
+                    Download("https://dl.bintray.com/eqdiet/app/main/EQDiet" + newVer + ".jar", "EQDiet" + newVer + ".jar");
+                    Download("https://dl.bintray.com/eqdiet/app/updater/EQDietUpdater.jar", "EQDietUpdater.jar");
                     jFrame1.dispose();
                     Runtime update = Runtime.getRuntime();
                     String[] commandToExecute = {"Java/bin/javaw", "-jar", installdir + "EQDietUpdater.jar"};
@@ -143,8 +143,13 @@ public final class EQDiet extends javax.swing.JFrame {
     }
     
     short onStart() {
-        java.io.File file = new java.io.File("EQDiet.dat");
-        java.io.File file2 = new java.io.File("FoodLog.txt");
+        /* Checks if data directory exists (useful for portable versions) */
+        java.io.File datadirpath = new java.io.File("Data");
+        if (!(datadirpath.exists())) {
+            datadirpath.mkdir();
+        }
+        java.io.File file = new java.io.File("Data/EQDiet.dat");
+        java.io.File file2 = new java.io.File("Data/FoodLog.txt");
         short val = 1;
         String sessionText = null;
         if (file.exists()) {
@@ -176,14 +181,14 @@ public final class EQDiet extends javax.swing.JFrame {
             StartLog();
             sessionText = jTextArea3.getText();
         }
-        System.out.println("Session number: " + val);
-        System.out.println("Session contents:\n" + sessionText);
+        System.out.println("Welcome to EQDiet");
+        System.out.println("An open source healthy diet app");
         jTextArea3.setText(sessionText);
-        return val; // This will never happen
+        return val;
     }
     
     void onExit() {
-        try (FileWriter fW = new FileWriter("EQDiet.dat");
+        try (FileWriter fW = new FileWriter("Data/EQDiet.dat");
                 BufferedWriter out = new BufferedWriter(fW)) {
             if (isSomethingWritten) {
                 out.write(sessionNumber + 1);
@@ -194,7 +199,7 @@ public final class EQDiet extends javax.swing.JFrame {
             out.write((int) logQuantity);
             out.close();
             if (isSomethingWritten && restartSession == 0) {
-                try (FileWriter fW2 = new FileWriter("FoodLog.txt", true);
+                try (FileWriter fW2 = new FileWriter("Data/FoodLog.txt", true);
                         BufferedWriter fL = new BufferedWriter(fW2)) {
                     fL.newLine();
                     fL.write("- In total you have eaten " + logQuantity + " kilocalories. -");
@@ -248,7 +253,7 @@ public final class EQDiet extends javax.swing.JFrame {
     public EQDiet() {
         sessionNumber = 1; // This may be overwritten
         this.duration = 1;
-        installdir = System.getenv("APPDATA") + "/EQDiet/data/";
+        installdir = System.getProperty("user.dir") + "/Data/";
         initComponents();
         ImageIcon img = new ImageIcon(getClass().getResource("EQDiet.png"));
         this.setIconImage(img.getImage());
@@ -357,7 +362,7 @@ public final class EQDiet extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setText("Website");
+        jButton8.setText("Documentation");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -373,17 +378,19 @@ public final class EQDiet extends javax.swing.JFrame {
         jFrame1.getContentPane().setLayout(jFrame1Layout);
         jFrame1Layout.setHorizontalGroup(
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrame1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton6)
-                .addGap(18, 18, 18)
-                .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton7)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame1Layout.createSequentialGroup()
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jFrame1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton7)))
                 .addContainerGap())
-            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jFrame1Layout.setVerticalGroup(
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -622,7 +629,7 @@ public final class EQDiet extends javax.swing.JFrame {
         } else {
           duration = 1;
           try {
-            FileWriter fwL = new FileWriter("FoodLog.txt", true);
+            FileWriter fwL = new FileWriter("Data/FoodLog.txt", true);
             try (BufferedWriter fL = new BufferedWriter(fwL)) {
                 while(duration > 0) {
                     fL.newLine();
@@ -667,11 +674,11 @@ public final class EQDiet extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        goToURL("https://eqdiet.weebly.com");
+        goToURL("https://docs.eqdiet.lumito.net");
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        java.io.File file = new java.io.File("data/VersionNumber.txt");
+        java.io.File file = new java.io.File("Data/VersionNumber.txt");
         if (file.exists()) {
             try (FileReader fReader = new FileReader(file);
                     BufferedReader reader = new BufferedReader(fReader)) {
