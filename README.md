@@ -17,7 +17,7 @@ To know more about this release, visit [this link](https://eqdiet.weebly.com/rel
 ### Build status
 | GitHub Actions | AppVeyor | Azure Pipelines |
 |:-:|:-:|:-:|
-| [![Java CI with Maven](https://github.com/EQDiet/EQDiet/workflows/Java%20CI%20with%20Maven/badge.svg)](https://github.com/EQDiet/EQDiet/actions?query=workflow%3A%22Java+CI+with+Maven%22) | [![Build status](https://ci.appveyor.com/api/projects/status/6l4q16pbxa8lv55k?svg=true)](https://ci.appveyor.com/project/EQDiet/EQDietBeta-08) | [![Build Status](https://eqdiet.visualstudio.com/GitHub/_apis/build/status/EQDiet.EQDiet?branchName=master)](https://eqdiet.visualstudio.com/GitHub/_build/latest?definitionId=8&branchName=master) |
+| [![Java CI with Maven](https://github.com/EQDiet/EQDiet/workflows/Java%20CI%20with%20Maven/badge.svg)](https://github.com/EQDiet/EQDiet/actions?query=workflow%3A%22Java+CI+with+Maven%22) | [![Build status](https://ci.appveyor.com/api/projects/status/9mxk1wmc0m2otoyi?svg=true)](https://ci.appveyor.com/project/EQDiet/EQDiet) | [![Build Status](https://eqdiet.visualstudio.com/GitHub/_apis/build/status/EQDiet.EQDiet?branchName=master)](https://eqdiet.visualstudio.com/GitHub/_build/latest?definitionId=8&branchName=master) |
 | [![Java CI with Maven Wrapper](https://github.com/EQDiet/EQDiet/workflows/Java%20CI%20with%20Maven%20Wrapper/badge.svg)](https://github.com/EQDiet/EQDiet/actions?query=workflow%3A%22Java+CI+with+Maven+Wrapper%22) | **----------** | **----------** |
 | [![CodeQL](https://github.com/EQDiet/EQDiet/workflows/CodeQL/badge.svg)](https://github.com/EQDiet/EQDiet/actions?query=workflow%3ACodeQL) | **----------** | **----------** |
 
