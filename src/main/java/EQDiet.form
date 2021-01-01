@@ -146,7 +146,7 @@
               <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="(C) 2020, EQDiet"/>
+            <Property name="text" type="java.lang.String" value="(C) 2021, EQDiet"/>
           </Properties>
         </Component>
       </SubComponents>
