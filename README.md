@@ -5,7 +5,7 @@ Welcome to EQDiet. Hope you enjoy using our app! You can visit our website [here
 
 ### Latest EQDiet Release: Beta 0.9
 
-To know more about this release, visit [this link](https://eqdiet.weebly.com/release-notes/released-eqdiet-beta-09)
+<!--To know more about this release, visit [this link](https://eqdiet.weebly.com/release-notes/released-eqdiet-beta-09)-->
 
 ![Image of EQDiet](https://eqdiet.weebly.com/uploads/1/2/2/7/122786941/eqdiet_orig.png)
 
